@@ -3,15 +3,20 @@ package main;
 import javax.swing.*;
 
 public class App {
-    public static void main(String[] args) {
-        Calculator calculator = new Calculator();
+    public static void main(final String[] args) throws Exception {
+        final Calculadora cal = new Calculadora();
 
         String s = JOptionPane.showInputDialog("Operando 1");
-        calculator.setOperand1(Double.parseDouble(s));
+        cal.setOp1(Double.parseDouble(s));
 
         s = JOptionPane.showInputDialog("Operando 2");
-        calculator.setOperand2(Double.parseDouble(s));
-
-        JOptionPane.showMessageDialog(null, "Resultado: " + calculator.add());
+        cal.setOp2(Double.parseDouble(s));
+        
+        try {
+            JOptionPane.showMessageDialog(null,"Resultado: " + cal.raizQuadrada());
+        } catch (MyArithmeticException e) {
+            e.printStackTrace();
+        }
     }
 }
+
